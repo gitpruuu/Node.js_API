@@ -1,6 +1,6 @@
 'use strict';
 
-const secret = require("../env/config_keys")
+const secret = require("../../env/config_keys")
 const jwt = require('jsonwebtoken');
 
 

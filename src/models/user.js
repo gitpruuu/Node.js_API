@@ -1,6 +1,6 @@
 'use strict';
 
-const mongoose = require("../database/mongo_connect");
+const mongoose = require("../../database/mongo_connect");
 const bcrypt = require("bcryptjs");
 
 

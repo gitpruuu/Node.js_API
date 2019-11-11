@@ -5,7 +5,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const userRoute = require("./api/routes/user");
+const userRoute = require("./src/routes/user");
 const app = express();
 
 

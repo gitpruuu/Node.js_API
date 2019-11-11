@@ -1,9 +1,9 @@
 'use strict';
 
 const express = require("express");
-const User = require("../../models/user");
-const auth = require('../../middleware/check_auth');
-const UserController = require("../../controllers/user")
+const User = require("../models/user");
+const auth = require('../middleware/check_auth');
+const UserController = require("../controllers/user")
 const router = express.Router();
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require("mongoose");
-const Config = require("../infra/mongo");
+const Config = require("./mongo");
 
 let uri = Config.Mongo_Uri;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const key = require("../env/config_keys");
+const key = require("../../env/config_keys");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const jwt = require('jsonwebtoken');
@@ -10,7 +10,7 @@ exports.signup = async (req, res) => {
     const { email } = req.body;
 
     const token = jwt.sign({ email: email }, key.jwt, {
-        expiresIn: 1800,
+        expiresIn: 3600,
     });
 
     req.body['token'] = token;
@@ -69,18 +69,40 @@ exports.signin = async (req, res) => {
 }
 
 exports.get_user = async (req, res) => {
-    console.log(req.params);
+
+
+    const tk = req.headers.authorization;
+    const token = tk.split(' ')[1];
+
 
     const user_id = req.params.user_id;
 
     try {
         const user = await User.findById({ _id: user_id }).select('-__v')
+
         if (user) {
 
-            res.status(200).send({
-                mensagem: user
-            })
-            return;
+            if (user.token === token) {
+                let now = new Date();
+                if (now.getMinutes() - user.ultimo_login.getMinutes() > 30) {
+                    res.status(401).send({
+                        mensagem: "Sessão inválida!"
+                    })
+                } else {
+
+                    res.status(200).send({
+                        mensagem: user
+                    })
+                    return;
+
+                }
+            }
+            else {
+                res.status(401).send({
+                    mensagem: "Não autorizado!"
+                })
+                return;
+            }
         }
         else {
             res.status(404).send({
