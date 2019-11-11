@@ -11,7 +11,7 @@ const router = express.Router();
 router.post("/signup", UserController.signup);
 
 // Redireciona para nosso controller onde fica a lógica para a tratativa da rota signin.
-router.get("/signin", UserController.signin);
+router.post("/signin", UserController.signin);
 
 // Redireciona para nosso controller onde fica a lógica para a tratativa da rota pesquisar usuário.
 router.get("/:user_id", auth, UserController.get_user);
