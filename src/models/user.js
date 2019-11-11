@@ -60,6 +60,16 @@ UserSchema.pre('save', async function (next) {
     next();
 });
 
+// UserSchema.pre('save', async function (next) {
+//     try {
+//         const hash = await bcrypt.hash(this.token, 10)
+//         this.token = hash;
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })
+
 
 
 const User = mongoose.model('User', UserSchema);

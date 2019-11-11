@@ -13,6 +13,7 @@ exports.signup = async (req, res) => {
         expiresIn: 3600,
     });
 
+
     req.body['token'] = token;
 
     try {
@@ -21,7 +22,6 @@ exports.signup = async (req, res) => {
             res.status(409).send({
                 mensagem: "E-mail já existente"
             })
-            User.connection.close()
             return;
         } else {
             const user = await User.create(req.body);
@@ -108,8 +108,7 @@ exports.get_user = async (req, res) => {
             res.status(404).send({
                 mensagem: "Usuário não encontrado!"
             })
-            User.connection.close()
-            return
+            return;
         }
 
     } catch (error) {
