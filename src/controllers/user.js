@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 
 exports.home = (req, res) => {
     res.status(200).send({
-        mensagem: "Hello, Heroku!!!;"
+        mensagem: "Hello, Heroku!!!"
     })
 }
 
