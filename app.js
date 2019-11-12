@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
     res.status(404).json({
         mensagem: "End point não encontrado!"
     })
-    next();
+    
 });
 
 
