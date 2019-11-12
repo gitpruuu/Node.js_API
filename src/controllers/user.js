@@ -5,6 +5,16 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const jwt = require('jsonwebtoken');
 
+
+
+
+exports.home = (req, res) => {
+    res.status(200).send({
+        mensagem: "Hello, World!;"
+    })
+}
+
+
 exports.signup = async (req, res) => {
 
     const { email } = req.body;

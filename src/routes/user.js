@@ -6,6 +6,9 @@ const auth = require('../middleware/check_auth');
 const UserController = require("../controllers/user")
 const router = express.Router();
 
+//Rota inicial apenas para teste no heroku
+
+router.get('/home', UserController.home);
 
 // Redireciona para nosso controller onde fica a lógica para a tratativa da rota signup.
 router.post("/signup", UserController.signup);
